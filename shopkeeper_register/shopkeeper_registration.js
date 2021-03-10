@@ -2,7 +2,7 @@ var db_connect = require('../firebase_connect/firebase_connect.js')
 var db = db_connect.db;
 
 exports.test_func = (req, res) => {
-	db.collection("users").add({
+	db.collection("users").doc("Shopkeeper").collection("Shopkeeper -ID").add({
     first: "Alan",
     middle: "Mathison",
     last: "Turing",
@@ -16,3 +16,4 @@ exports.test_func = (req, res) => {
 });
 	res.send('done');
 };
+
