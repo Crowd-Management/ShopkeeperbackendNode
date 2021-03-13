@@ -1,17 +1,16 @@
-const express = require('express')
-const app = express()
-const port = 3000
+const bodyParser = require("body-parser");
+const express = require("express");
 
-var db_connect = require('./firebase_connect/firebase_connect.js');
+const app = express();
 
-var shopkeeper_register = require('./shopkeeper_register/shopkeeper_registration.js');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-var db = db_connect.db;
+const port = 5000;
 
-app.get('/', shopkeeper_register.test_func)
-
-
+var shopkeeper_register = require("./shopkeeper_register/shopkeeper_registration.js");
+app.use("/", shopkeeper_register);
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
-})
+	console.log(`App listening at http://localhost:${port}`);
+});
